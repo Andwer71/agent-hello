@@ -17,5 +17,15 @@
     return tasks.filter(task => task.id !== id);
   }
 
-  return { addTask, toggleTask, deleteTask };
+  function filterTasks(tasks, filter) {
+    if (filter === 'active') return tasks.filter(task => !task.completed);
+    if (filter === 'completed') return tasks.filter(task => task.completed);
+    return tasks;
+  }
+
+  function countRemaining(tasks) {
+    return tasks.filter(task => !task.completed).length;
+  }
+
+  return { addTask, toggleTask, deleteTask, filterTasks, countRemaining };
 });

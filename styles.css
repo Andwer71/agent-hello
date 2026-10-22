@@ -49,7 +49,14 @@ h1 { margin: 17px 0 8px; font-family: 'Playfair Display', Georgia, serif; font-s
 .list-heading { display: flex; align-items: center; justify-content: space-between; margin-top: 40px; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
 .list-heading h2 { margin: 0; font-size: 14px; font-weight: 700; }
 .task-count { color: var(--muted); font-size: 11px; }
+.remaining-count { margin: 13px 0 12px; color: var(--green); font-size: 12px; font-weight: 600; }
+.filters { display: flex; gap: 5px; margin-bottom: 8px; }
+.filters button { padding: 7px 12px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: #78867b; font: inherit; font-size: 11px; cursor: pointer; transition: background .18s, color .18s, border-color .18s; }
+.filters button:hover { background: #f3f5f0; color: var(--ink); }
+.filters button[aria-pressed="true"] { border-color: #dce5da; background: #eef3ec; color: #385b43; font-weight: 600; }
+.filters button:focus-visible { outline: 2px solid #78977e; outline-offset: 2px; }
 .todo-list { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.filtered-empty-state { margin: 0; padding: 22px 0; color: var(--muted); font-size: 12px; text-align: center; }
 .todo-item { display: flex; align-items: center; gap: 12px; min-height: 55px; border-bottom: 1px solid #f0f0eb; animation: appear .2s ease-out; }
 .todo-item:last-child { border-bottom: 0; }
 .complete-button { display: grid; place-items: center; flex: 0 0 19px; width: 19px; height: 19px; padding: 0; border: 1.5px solid #cbd3c9; border-radius: 50%; background: transparent; color: white; cursor: pointer; }
@@ -60,6 +67,7 @@ h1 { margin: 17px 0 8px; font-family: 'Playfair Display', Georgia, serif; font-s
 .delete-button { padding: 7px; border: 0; background: transparent; color: #a3aaa2; font-size: 17px; line-height: 1; cursor: pointer; opacity: .65; }
 .delete-button:hover { color: #a5463f; opacity: 1; }
 .empty-state { display: grid; justify-items: center; padding: 34px 0 8px; color: var(--muted); text-align: center; }
+.empty-state[hidden] { display: none; }
 .empty-icon { display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 10px; border-radius: 50%; background: #f0f3ed; color: #78927d; font-size: 19px; }
 .empty-state p { margin: 0 0 5px; color: #536357; font-size: 13px; font-weight: 600; }
 .empty-state > span:last-child { font-size: 11px; }

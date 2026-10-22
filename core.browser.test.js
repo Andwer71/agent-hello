@@ -1,5 +1,5 @@
 (() => {
-  const { addTask, toggleTask, deleteTask } = TodoCore;
+  const { addTask, toggleTask, deleteTask, filterTasks, countRemaining } = TodoCore;
   const results = document.querySelector('#test-results');
   const checks = [];
 
@@ -47,6 +47,40 @@
     ];
     const remaining = deleteTask(tasks, 'id-1');
     assert(remaining.length === 1 && remaining[0].id === 'id-2', 'fel uppgift togs bort');
+  });
+
+  test('Filtrerar fram aktiva uppgifter', () => {
+    const tasks = [
+      { id: 'id-1', text: 'Läs', completed: false },
+      { id: 'id-2', text: 'Skriv', completed: true }
+    ];
+    const active = filterTasks(tasks, 'active');
+    assert(active.length === 1 && active[0].id === 'id-1', 'aktivt filter visade fel uppgifter');
+  });
+
+  test('Filtrerar fram klara uppgifter', () => {
+    const tasks = [
+      { id: 'id-1', text: 'Läs', completed: false },
+      { id: 'id-2', text: 'Skriv', completed: true }
+    ];
+    const completed = filterTasks(tasks, 'completed');
+    assert(completed.length === 1 && completed[0].id === 'id-2', 'klart filter visade fel uppgifter');
+  });
+
+  test('Visar alla uppgifter och lämnar tomma filterresultat tomma', () => {
+    const tasks = [{ id: 'id-1', text: 'Läs', completed: false }];
+    assert(filterTasks(tasks, 'all') === tasks, 'alla-filtret ändrade listan');
+    assert(filterTasks(tasks, 'completed').length === 0, 'tomt filterresultat innehöll uppgifter');
+  });
+
+  test('Räknar återstående uppgifter', () => {
+    const tasks = [
+      { id: 'id-1', text: 'Läs', completed: false },
+      { id: 'id-2', text: 'Skriv', completed: true },
+      { id: 'id-3', text: 'Promenera', completed: false }
+    ];
+    assert(countRemaining(tasks) === 2, 'antalet återstående uppgifter är fel');
+    assert(countRemaining([]) === 0, 'tom lista ska ha noll återstående uppgifter');
   });
 
   test('Ändrar inte ursprungslistan', () => {

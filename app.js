@@ -5,10 +5,14 @@
   const list = document.querySelector('#todo-list');
   const emptyState = document.querySelector('#empty-state');
   const taskCount = document.querySelector('#task-count');
+  const remainingCount = document.querySelector('#remaining-count');
+  const filteredEmptyState = document.querySelector('#filtered-empty-state');
+  const filterButtons = document.querySelectorAll('[data-filter]');
   const formError = document.querySelector('#form-error');
   const storageError = document.querySelector('#storage-error');
 
   let tasks = [];
+  let currentFilter = 'all';
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved !== null) {
@@ -36,8 +40,9 @@
   }
 
   function render() {
+    const visibleTasks = TodoCore.filterTasks(tasks, currentFilter);
     list.replaceChildren();
-    for (const task of tasks) {
+    for (const task of visibleTasks) {
       const item = document.createElement('li');
       item.className = `todo-item${task.completed ? ' is-complete' : ''}`;
 
@@ -73,8 +78,22 @@
     }
 
     const count = tasks.length;
-    taskCount.textContent = `${count} ${count === 1 ? 'uppgift' : 'uppgifter'}`;
+    const visibleCount = visibleTasks.length;
+    const remaining = TodoCore.countRemaining(tasks);
+    taskCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'uppgift' : 'uppgifter'}`;
+    remainingCount.textContent = `${remaining} ${remaining === 1 ? 'uppgift' : 'uppgifter'} kvar`;
     emptyState.hidden = count > 0;
+    filteredEmptyState.hidden = count === 0 || visibleCount > 0;
+    for (const button of filterButtons) {
+      button.setAttribute('aria-pressed', String(button.dataset.filter === currentFilter));
+    }
+  }
+
+  for (const button of filterButtons) {
+    button.addEventListener('click', () => {
+      currentFilter = button.dataset.filter;
+      render();
+    });
   }
 
   form.addEventListener('submit', event => {

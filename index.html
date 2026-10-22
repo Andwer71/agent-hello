@@ -33,7 +33,14 @@
           <h2>Din lista</h2>
           <span id="task-count" class="task-count" aria-live="polite">0 uppgifter</span>
         </div>
+        <p id="remaining-count" class="remaining-count" aria-live="polite">0 uppgifter kvar</p>
+        <div class="filters" role="group" aria-label="Filtrera uppgifter">
+          <button type="button" data-filter="all" aria-pressed="true">Alla</button>
+          <button type="button" data-filter="active" aria-pressed="false">Aktiva</button>
+          <button type="button" data-filter="completed" aria-pressed="false">Klara</button>
+        </div>
         <ul id="todo-list" class="todo-list" aria-label="Dina uppgifter"></ul>
+        <p id="filtered-empty-state" class="filtered-empty-state" hidden>Inga uppgifter i den här vyn.</p>
         <div id="empty-state" class="empty-state">
           <span class="empty-icon" aria-hidden="true">✳</span>
           <p>Här är det lugnt än så länge.</p>

@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
-const { addTask, toggleTask, deleteTask } = require('./core.js');
+const { addTask, toggleTask, deleteTask, filterTasks, countRemaining } = require('./core.js');
 
 describe('att göra-listans kärnfunktioner', () => {
   it('lägger till uppgifter med trimmad text och som ej klara', () => {
@@ -33,6 +33,42 @@ describe('att göra-listans kärnfunktioner', () => {
       { id: 'id-2', text: 'Skriv', completed: true }
     ];
     assert.deepEqual(deleteTask(tasks, 'id-1'), [tasks[1]]);
+  });
+
+  it('filtrerar fram aktiva uppgifter', () => {
+    const tasks = [
+      { id: 'id-1', text: 'Läs', completed: false },
+      { id: 'id-2', text: 'Skriv', completed: true }
+    ];
+    assert.deepEqual(filterTasks(tasks, 'active'), [tasks[0]]);
+  });
+
+  it('filtrerar fram klara uppgifter', () => {
+    const tasks = [
+      { id: 'id-1', text: 'Läs', completed: false },
+      { id: 'id-2', text: 'Skriv', completed: true }
+    ];
+    assert.deepEqual(filterTasks(tasks, 'completed'), [tasks[1]]);
+  });
+
+  it('visar alla uppgifter för filtret alla och för okända filter', () => {
+    const tasks = [
+      { id: 'id-1', text: 'Läs', completed: false },
+      { id: 'id-2', text: 'Skriv', completed: true }
+    ];
+    assert.equal(filterTasks(tasks, 'all'), tasks);
+    assert.equal(filterTasks(tasks, 'unknown'), tasks);
+  });
+
+  it('räknar återstående uppgifter som inte är klara', () => {
+    const tasks = [
+      { id: 'id-1', text: 'Läs', completed: false },
+      { id: 'id-2', text: 'Skriv', completed: true },
+      { id: 'id-3', text: 'Promenera', completed: false }
+    ];
+    assert.equal(countRemaining(tasks), 2);
+    assert.equal(countRemaining(filterTasks(tasks, 'completed')), 0);
+    assert.equal(countRemaining([]), 0);
   });
 
   it('ändrar inte ursprungslistan när listan uppdateras', () => {
