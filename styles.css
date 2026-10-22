@@ -5,6 +5,7 @@
   --ink: #263b32;
   --muted: #839087;
   --green: #456b55;
+  --button-orange: #c66d32;
   --paper: #fffefa;
   --line: #e9e9e1;
   font-family: 'DM Sans', sans-serif;
@@ -40,8 +41,8 @@ h1 { margin: 17px 0 8px; font-family: 'Playfair Display', Georgia, serif; font-s
 .entry-form input { min-width: 0; flex: 1; padding: 14px 15px; border: 1px solid #e5e8e0; border-radius: 9px; outline: none; background: #fff; color: var(--ink); font: inherit; font-size: 13px; transition: border-color .18s, box-shadow .18s; }
 .entry-form input::placeholder { color: #a4aca5; }
 .entry-form input:focus { border-color: #78977e; box-shadow: 0 0 0 3px rgba(120, 151, 126, .13); }
-.entry-form button { padding: 0 17px; border: 0; border-radius: 9px; background: var(--green); color: white; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: background .18s, transform .18s; white-space: nowrap; }
-.entry-form button:hover { background: #355540; }
+.entry-form button { padding: 0 17px; border: 0; border-radius: 9px; background: var(--button-orange); color: white; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: background .18s, transform .18s; white-space: nowrap; }
+.entry-form button:hover { background: #a95422; }
 .entry-form button:active { transform: scale(.98); }
 .entry-form button span { margin-right: 4px; font-size: 17px; vertical-align: -1px; }
 .form-error, .storage-error { margin: 9px 0 0; color: #a5463f; font-size: 12px; }
@@ -53,15 +54,15 @@ h1 { margin: 17px 0 8px; font-family: 'Playfair Display', Georgia, serif; font-s
 .filters { display: flex; gap: 5px; margin-bottom: 8px; }
 .filters button { padding: 7px 12px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: #78867b; font: inherit; font-size: 11px; cursor: pointer; transition: background .18s, color .18s, border-color .18s; }
 .filters button:hover { background: #f3f5f0; color: var(--ink); }
-.filters button[aria-pressed="true"] { border-color: #dce5da; background: #eef3ec; color: #385b43; font-weight: 600; }
+.filters button[aria-pressed="true"] { border-color: #f0d5c3; background: #fbefe7; color: #a95422; font-weight: 600; }
 .filters button:focus-visible { outline: 2px solid #78977e; outline-offset: 2px; }
 .todo-list { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
 .filtered-empty-state { margin: 0; padding: 22px 0; color: var(--muted); font-size: 12px; text-align: center; }
 .todo-item { display: flex; align-items: center; gap: 12px; min-height: 55px; border-bottom: 1px solid #f0f0eb; animation: appear .2s ease-out; }
 .todo-item:last-child { border-bottom: 0; }
 .complete-button { display: grid; place-items: center; flex: 0 0 19px; width: 19px; height: 19px; padding: 0; border: 1.5px solid #cbd3c9; border-radius: 50%; background: transparent; color: white; cursor: pointer; }
-.complete-button:hover { border-color: var(--green); }
-.todo-item.is-complete .complete-button { border-color: var(--green); background: var(--green); }
+.complete-button:hover { border-color: var(--button-orange); }
+.todo-item.is-complete .complete-button { border-color: var(--button-orange); background: var(--button-orange); }
 .task-text { flex: 1; overflow-wrap: anywhere; color: #405146; font-size: 13px; line-height: 1.5; }
 .is-complete .task-text { color: #9ca69d; text-decoration: line-through; text-decoration-color: #aeb9ae; }
 .delete-button { padding: 7px; border: 0; background: transparent; color: #a3aaa2; font-size: 17px; line-height: 1; cursor: pointer; opacity: .65; }
