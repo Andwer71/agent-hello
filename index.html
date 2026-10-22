@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f3ee">
+    <title>Att göra — din lugna lista</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Att göra, startsida">
+          <span class="brand-mark" aria-hidden="true">✓</span>
+          <span>lugn lista</span>
+        </a>
+        <span class="local-note"><span aria-hidden="true">●</span> Sparas på din enhet</span>
+      </header>
+
+      <section class="todo-panel" aria-labelledby="page-title">
+        <div class="eyebrow"><span></span> EN SAK I TAGET</div>
+        <h1 id="page-title">Vad vill du få gjort?</h1>
+        <p class="intro">Skriv ner det. Ta det i din egen takt.</p>
+
+        <form id="todo-form" class="entry-form">
+          <label class="visually-hidden" for="todo-input">Ny uppgift</label>
+          <input id="todo-input" name="task" type="text" placeholder="Till exempel: vattna växterna" autocomplete="off" maxlength="200" required>
+          <button type="submit"><span aria-hidden="true">＋</span> Lägg till</button>
+        </form>
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+
+        <div class="list-heading">
+          <h2>Din lista</h2>
+          <span id="task-count" class="task-count" aria-live="polite">0 uppgifter</span>
+        </div>
+        <ul id="todo-list" class="todo-list" aria-label="Dina uppgifter"></ul>
+        <div id="empty-state" class="empty-state">
+          <span class="empty-icon" aria-hidden="true">✳</span>
+          <p>Här är det lugnt än så länge.</p>
+          <span>Lägg till något litet att börja med.</span>
+        </div>
+        <p id="storage-error" class="storage-error" role="status" hidden></p>
+      </section>
+
+      <footer class="footer">Små steg räknas också <span aria-hidden="true">✳</span></footer>
+    </main>
+    <script src="core.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

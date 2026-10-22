@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tester — Lugn lista</title>
+    <style>
+      body { max-width: 680px; margin: 48px auto; padding: 0 20px; color: #263b32; font: 16px/1.6 system-ui, sans-serif; }
+      h1 { font-size: 1.5rem; }
+      #result { padding: 14px; border-radius: 8px; background: #edf4ec; }
+      .fail { color: #a5463f; background: #fff0ee !important; }
+      li { margin: 5px 0; }
+    </style>
+  </head>
+  <body>
+    <h1>Tester för Lugn lista</h1>
+    <p id="result" role="status">Kör tester…</p>
+    <ol id="test-results"></ol>
+    <script src="core.js"></script>
+    <script src="core.browser.test.js"></script>
+  </body>
+</html>
