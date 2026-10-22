@@ -17,8 +17,14 @@
   }
 
   test('Lägger till uppgift med trimmad text', () => {
-    const tasks = addTask([], '  Köp kaffe  ', 'id-1');
+    const tasks = addTask([], '  Köp kaffe  ', 'id-1', '2026-10-22T19:51:27.000Z');
     assert(tasks.length === 1 && tasks[0].text === 'Köp kaffe' && !tasks[0].completed, 'uppgiften blev fel');
+    assert(tasks[0].createdAt === '2026-10-22T19:51:27.000Z', 'skapelsetiden sparades inte');
+  });
+
+  test('Sparar en giltig tidsstämpel automatiskt', () => {
+    const timestamp = addTask([], 'Läs', 'id-1')[0].createdAt;
+    assert(Number.isFinite(Date.parse(timestamp)), 'tidsstämpeln är ogiltig');
   });
 
   test('Avvisar tom text och blanksteg', () => {

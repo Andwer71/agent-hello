@@ -18,7 +18,8 @@
     if (saved !== null) {
       const parsed = JSON.parse(saved);
       if (!Array.isArray(parsed) || parsed.some(task =>
-        !task || typeof task.id !== 'string' || typeof task.text !== 'string' || typeof task.completed !== 'boolean'
+        !task || typeof task.id !== 'string' || typeof task.text !== 'string' || typeof task.completed !== 'boolean' ||
+        (task.createdAt !== undefined && (typeof task.createdAt !== 'string' || !Number.isFinite(Date.parse(task.createdAt))))
       )) throw new Error('Ogiltiga sparade uppgifter.');
       tasks = parsed;
     }
@@ -62,6 +63,22 @@
       text.className = 'task-text';
       text.textContent = task.text;
 
+      if (task.createdAt) {
+        const time = document.createElement('time');
+        time.className = 'task-time';
+        time.dateTime = task.createdAt;
+        time.textContent = new Intl.DateTimeFormat('sv-SE', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hourCycle: 'h23'
+        }).format(new Date(task.createdAt));
+
+        item.append(completeButton, text, time);
+      } else {
+        item.append(completeButton, text);
+      }
+
       const deleteButton = document.createElement('button');
       deleteButton.className = 'delete-button';
       deleteButton.type = 'button';
@@ -73,7 +90,7 @@
         render();
       });
 
-      item.append(completeButton, text, deleteButton);
+      item.append(deleteButton);
       list.append(item);
     }
 

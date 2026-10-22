@@ -3,10 +3,10 @@
   if (typeof module !== 'undefined' && module.exports) module.exports = core;
   else root.TodoCore = core;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
-  function addTask(tasks, text, id) {
+  function addTask(tasks, text, id, createdAt = new Date().toISOString()) {
     const title = text.trim();
     if (!title) return tasks;
-    return [...tasks, { id, text: title, completed: false }];
+    return [...tasks, { id, text: title, completed: false, createdAt }];
   }
 
   function toggleTask(tasks, id) {

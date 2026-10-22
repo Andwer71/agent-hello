@@ -4,9 +4,18 @@ const { addTask, toggleTask, deleteTask, filterTasks, countRemaining } = require
 
 describe('att göra-listans kärnfunktioner', () => {
   it('lägger till uppgifter med trimmad text och som ej klara', () => {
-    assert.deepEqual(addTask([], '  Köp kaffe  ', 'id-1'), [
-      { id: 'id-1', text: 'Köp kaffe', completed: false }
+    assert.deepEqual(addTask([], '  Köp kaffe  ', 'id-1', '2026-10-22T19:51:27.000Z'), [
+      { id: 'id-1', text: 'Köp kaffe', completed: false, createdAt: '2026-10-22T19:51:27.000Z' }
     ]);
+  });
+
+  it('sparar aktuell tid när en uppgift skapas', () => {
+    const before = Date.now();
+    const task = addTask([], 'Läs', 'id-1')[0];
+    const createdAt = Date.parse(task.createdAt);
+    const after = Date.now();
+    assert.equal(task.createdAt, new Date(createdAt).toISOString());
+    assert.ok(createdAt >= before && createdAt <= after);
   });
 
   it('avvisar tomma uppgifter och bara blanksteg', () => {

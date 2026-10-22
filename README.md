@@ -1,6 +1,6 @@
 # Lugn lista
 
-En liten svensk att göra-lista byggd med vanlig HTML, CSS och JavaScript. Lägg till, slutför och ta bort uppgifter, filtrera listan på alla, aktiva eller klara uppgifter och se hur många som återstår. Appen behöver ingen backend eller byggprocess och kan publiceras som en statisk webbplats på GitHub Pages. Uppgifterna sparas i webbläsarens `localStorage` på den enhet och i den webbläsare där du använder appen.
+En liten svensk att göra-lista byggd med vanlig HTML, CSS och JavaScript. Lägg till, slutför och ta bort uppgifter, filtrera listan på alla, aktiva eller klara uppgifter och se hur många som återstår. Varje ny uppgift får en sparad tidsstämpel som visas i lokal tid. Appen behöver ingen backend eller byggprocess och kan publiceras som en statisk webbplats på GitHub Pages. Uppgifterna sparas i webbläsarens `localStorage` på den enhet och i den webbläsare där du använder appen.
 
 ## Starta lokalt
 

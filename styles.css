@@ -64,6 +64,7 @@ h1 { margin: 17px 0 8px; font-family: 'Playfair Display', Georgia, serif; font-s
 .complete-button:hover { border-color: var(--button-orange); }
 .todo-item.is-complete .complete-button { border-color: var(--button-orange); background: var(--button-orange); }
 .task-text { flex: 1; overflow-wrap: anywhere; color: #405146; font-size: 13px; line-height: 1.5; }
+.task-time { flex: 0 0 auto; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .is-complete .task-text { color: #9ca69d; text-decoration: line-through; text-decoration-color: #aeb9ae; }
 .delete-button { padding: 7px; border: 0; background: transparent; color: #a3aaa2; font-size: 17px; line-height: 1; cursor: pointer; opacity: .65; }
 .delete-button:hover { color: #a5463f; opacity: 1; }
